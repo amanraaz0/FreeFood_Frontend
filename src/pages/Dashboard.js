@@ -41,10 +41,13 @@ export default function Dashboard({ currentUser, isLoggedIn }) {
     }
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch(`/api/food/claim/${foodId}`, {
-        method: "PUT",
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const res = await fetch(
+        `https://freefood-backend-fdj6.onrender.com/api/food/claim/${foodId}`,
+        {
+          method: "PUT",
+          headers: { Authorization: `Bearer ${token}` },
+        },
+      );
       const data = await res.json();
       if (!res.ok) {
         alert(data.message || "Unable to claim");
