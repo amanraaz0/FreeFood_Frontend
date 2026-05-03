@@ -32,7 +32,7 @@ export default function MyProducts() {
     try {
       const token = localStorage.getItem("token");
 
-      const res = await fetch(`/api/food/confirm-pickup/${claimId}`, {
+      const res = await fetch(`https://freefood-backend-fdj6.onrender.com/api/food/confirm-pickup/${claimId}`, {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${token}`,

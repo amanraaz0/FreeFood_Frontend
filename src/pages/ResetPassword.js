@@ -23,13 +23,16 @@ export default function ResetPassword() {
       return;
     }
 
-    const res = await fetch("http://localhost:5000/api/auth/reset-password", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
+    const res = await fetch(
+      "https://freefood-backend-fdj6.onrender.com/api/auth/reset-password",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ otp, password }),
       },
-      body: JSON.stringify({ otp, password }),
-    });
+    );
 
     if (res.ok) {
       alert("✅ Password changed successfully");
@@ -55,7 +58,6 @@ export default function ResetPassword() {
           className="w-full p-3 border rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-green-400"
           onChange={(e) => setOtp(e.target.value)}
         />
-
 
         {/* New Password */}
         <div className="relative mb-4">

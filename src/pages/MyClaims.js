@@ -7,7 +7,7 @@ export default function MyClaims() {
     try {
       const token = localStorage.getItem("token");
 
-      const res = await fetch(`/api/food/cancel-claim/${claimId}`, {
+      const res = await fetch(`https://freefood-backend-fdj6.onrender.com/api/food/cancel-claim/${claimId}`, {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -35,7 +35,7 @@ export default function MyClaims() {
       try {
         const token = localStorage.getItem("token");
 
-        const res = await fetch("/api/food/my-claims", {
+        const res = await fetch("https://freefood-backend-fdj6.onrender.com/api/food/my-claims", {
           headers: {
             Authorization: `Bearer ${token}`,
           },

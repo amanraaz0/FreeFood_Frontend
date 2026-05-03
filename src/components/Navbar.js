@@ -15,11 +15,14 @@ export default function Navbar({ isLoggedIn, handleLogout, currentUser }) {
       try {
         const token = localStorage.getItem("token");
 
-        const res = await fetch("/api/notifications/all", {
-          headers: {
-            Authorization: `Bearer ${token}`,
+        const res = await fetch(
+          "https://freefood-backend-fdj6.onrender.com/api/notifications/all",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
           },
-        });
+        );
 
         const data = await res.json();
         setNotifications(Array.isArray(data) ? data : []);
@@ -44,20 +47,22 @@ export default function Navbar({ isLoggedIn, handleLogout, currentUser }) {
     };
 
     document.addEventListener("mousedown", handleClickOutside);
-    return () =>
-      document.removeEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   const handleNotificationClick = async (id) => {
     try {
       const token = localStorage.getItem("token");
 
-      await fetch(`/api/notifications/read/${id}`, {
-        method: "PUT",
-        headers: {
-          Authorization: `Bearer ${token}`,
+      await fetch(
+        `https://freefood-backend-fdj6.onrender.com/api/notifications/read/${id}`,
+        {
+          method: "PUT",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         },
-      });
+      );
 
       setNotifications((prev) => prev.filter((n) => n._id !== id));
       setShowDropdown(false);
@@ -79,7 +84,6 @@ export default function Navbar({ isLoggedIn, handleLogout, currentUser }) {
 
         {/* RIGHT SIDE */}
         <div className="flex items-center gap-3">
-          
           {/* 🔔 Mobile Notification (OUTSIDE) */}
           {isLoggedIn && (
             <div
@@ -209,9 +213,7 @@ export default function Navbar({ isLoggedIn, handleLogout, currentUser }) {
           ref={dropdownRef}
           className="absolute right-2 md:right-6 top-16 w-[90%] md:w-80 bg-white text-black rounded-lg shadow-lg p-3 z-50"
         >
-          <h3 className="font-bold mb-2 text-green-600">
-            Notifications 🔔
-          </h3>
+          <h3 className="font-bold mb-2 text-green-600">Notifications 🔔</h3>
 
           {notifications.length === 0 ? (
             <p className="text-sm text-gray-500">No notifications</p>
