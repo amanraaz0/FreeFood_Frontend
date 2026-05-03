@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
 export default function MyProducts() {
-
   const [foods, setFoods] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -10,15 +9,17 @@ export default function MyProducts() {
     try {
       const token = localStorage.getItem("token");
 
-      const res = await fetch("/api/food/my-products", {
-        headers: {
-          Authorization: `Bearer ${token}`,
+      const res = await fetch(
+        "https://freefood-backend-fdj6.onrender.com/api/food/my-products",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         },
-      });
+      );
 
       const data = await res.json();
       setFoods(Array.isArray(data) ? data : []);
-
     } catch {
       alert("Failed to load products");
     } finally {
@@ -49,7 +50,6 @@ export default function MyProducts() {
 
       // 🔥 REFRESH LIST
       fetchMyProducts();
-
     } catch {
       alert("Server error");
     }
@@ -73,7 +73,6 @@ export default function MyProducts() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {foods.map((food) => (
           <div key={food._id} className="bg-white rounded-lg shadow">
-
             <img
               src={food.image}
               alt={food.title}
@@ -105,7 +104,6 @@ export default function MyProducts() {
                   ✅ Pickup Completed
                 </p>
               )}
-
             </div>
           </div>
         ))}

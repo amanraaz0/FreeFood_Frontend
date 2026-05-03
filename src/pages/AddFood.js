@@ -43,13 +43,16 @@ export default function AddFood({ isLoggedIn }) {
     try {
       setLoading(true);
 
-      const res = await fetch("/api/food/add", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
+      const res = await fetch(
+        "https://freefood-backend-fdj6.onrender.com/api/food/add",
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          body: formData,
         },
-        body: formData,
-      });
+      );
 
       const data = await res.json();
 
