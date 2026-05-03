@@ -84,7 +84,7 @@ export default function Dashboard({ currentUser, isLoggedIn }) {
           >
             <img
               loading="lazy"
-              src={`http://localhost:5000/uploads/${food.image}`}
+             src={food.image}
               alt={food.title}
               className="w-full aspect-square object-cover rounded-t-lg"
             />

@@ -69,7 +69,7 @@ export default function MyClaims() {
         {claims.map((claim) => (
           <div key={claim._id} className="bg-white rounded-lg shadow">
             <img
-              src={`http://localhost:5000/uploads/${claim.food.image}`}
+              src={claim.food.image}
               alt={claim.food.title}
               className="w-full h-48 object-cover rounded-t-lg"
             />
@@ -79,11 +79,10 @@ export default function MyClaims() {
               <p className="text-sm">Qty: {claim.food.quantity}</p>
               <p className="text-sm">Location: {claim.food.location}</p>
               {claim.status === "picked" && (
-  <p className="text-sm text-green-600 font-semibold">
-    ✅ Picked Up
-  </p>
-)}
-
+                <p className="text-sm text-green-600 font-semibold">
+                  ✅ Picked Up
+                </p>
+              )}
 
               <span className="inline-block mt-3 px-3 py-1 text-sm bg-green-100 text-green-700 rounded">
                 ✔ Claimed

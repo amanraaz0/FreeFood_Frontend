@@ -75,7 +75,7 @@ export default function MyProducts() {
           <div key={food._id} className="bg-white rounded-lg shadow">
 
             <img
-              src={`http://localhost:5000/uploads/${food.image}`}
+              src={food.image}
               alt={food.title}
               className="w-full h-48 object-cover rounded-t-lg"
             />
