@@ -8,7 +8,9 @@ export default function Dashboard({ currentUser, isLoggedIn }) {
 
   const fetchFoods = async () => {
     try {
-      const res = await fetch("/api/food/all");
+      const res = await fetch(
+        "https://freefood-backend-fdj6.onrender.com/api/food/all",
+      );
       const data = await res.json();
       setFoods(Array.isArray(data) ? data : []);
     } catch (e) {
@@ -84,7 +86,7 @@ export default function Dashboard({ currentUser, isLoggedIn }) {
           >
             <img
               loading="lazy"
-             src={food.image}
+              src={food.image}
               alt={food.title}
               className="w-full aspect-square object-cover rounded-t-lg"
             />
