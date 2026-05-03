@@ -77,35 +77,35 @@ export default function Footer() {
 
             <div className="flex items-center gap-3">
               <a
-                href="#"
+                href="/"
                 className="bg-white text-green-900 p-2 rounded-full hover:scale-110 transition transform text-sm"
                 aria-label="Website"
               >
                 🌐
               </a>
               <a
-                href="#"
+                href="/"
                 className="bg-white text-green-900 p-2 rounded-full hover:scale-110 transition transform text-sm"
                 aria-label="Facebook"
               >
                 📘
               </a>
               <a
-                href="#"
+                href="/"
                 className="bg-white text-green-900 p-2 rounded-full hover:scale-110 transition transform text-sm"
                 aria-label="Instagram"
               >
                 📸
               </a>
               <a
-                href="#"
+                href="/"
                 className="bg-white text-green-900 p-2 rounded-full hover:scale-110 transition transform text-sm"
                 aria-label="YouTube"
               >
                 ▶️
               </a>
               <a
-                href="#"
+                href="/"
                 className="bg-white text-green-900 p-2 rounded-full hover:scale-110 transition transform text-sm"
                 aria-label="LinkedIn"
               >
