@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const sendOTP = async () => {
@@ -11,19 +12,30 @@ export default function ForgotPassword() {
       return;
     }
 
-    const res = await fetch("http://localhost:5000/api/auth/send-otp", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email }),
-    });
+    setLoading(true); // 🔥 START LOADING
 
-    if (res.ok) {
-      alert("OTP sent to your email");
-      navigate("/reset-password");
-    } else {
-      alert("Error sending OTP");
+    try {
+      const res = await fetch(
+        "https://freefood-backend-fdj6.onrender.com/api/auth/send-otp",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email }),
+        },
+      );
+
+      if (res.ok) {
+        alert("OTP sent to your email");
+        navigate("/reset-password");
+      } else {
+        alert("Error sending OTP");
+      }
+    } catch {
+      alert("Server error");
+    } finally {
+      setLoading(false); // 🔥 STOP LOADING
     }
   };
 
@@ -38,12 +50,16 @@ export default function ForgotPassword() {
           className="w-full p-3 border rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-blue-400"
           onChange={(e) => setEmail(e.target.value)}
         />
-
         <button
           onClick={sendOTP}
-          className="w-full bg-blue-500 text-white p-3 rounded-lg text-lg font-semibold hover:bg-blue-600 transition"
+          disabled={loading}
+          className="w-full bg-blue-500 text-white p-3 rounded-lg text-lg font-semibold hover:bg-blue-600 transition flex justify-center items-center"
         >
-          Send OTP
+          {loading ? (
+            <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-white"></div>
+          ) : (
+            "Send OTP"
+          )}
         </button>
       </div>
     </div>
