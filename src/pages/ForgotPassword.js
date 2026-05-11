@@ -15,16 +15,13 @@ export default function ForgotPassword() {
     setLoading(true); // 🔥 START LOADING
 
     try {
-      const res = await fetch(
-        "https://freefood-backend-fdj6.onrender.com/api/auth/send-otp",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email }),
+      const res = await fetch("http://localhost:5000/api/auth/send-otp", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-      );
+        body: JSON.stringify({ email }),
+      });
 
       if (res.ok) {
         alert("OTP sent to your email");
